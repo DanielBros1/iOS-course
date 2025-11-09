@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var userIsTyping = false
     
     let buttons: [[String]] = [
-        ["C", "S", "-", "/"],
+        ["C", "S", "%", "/"],
         ["1", "2", "3", "+"]
     ]
     
@@ -42,7 +42,7 @@ struct ContentView: View {
                 }
             }
             .padding()
-            .background(Color.gray)
+            .background(Color.gray.opacity(0.2))
         }
     
     private func buttonPressed(_ symbol: String) {
