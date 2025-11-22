@@ -23,21 +23,26 @@ struct ContentView: View {
     
     
     var body: some View {
-            VStack(spacing: 12) {
+        GeometryReader { geo in
+            VStack(spacing: geo.size.height * 0.015) {
                 Spacer()
                 
                 HStack {
                     Spacer()
                     Text(display)
+                        .font(.system(size: geo.size.width * 0.12))
                         .foregroundColor(.white)
                         .padding()
-                    }
-                    .background(Color.black)
+                }
+                .background(Color.black)
                 
                 ForEach(buttons, id: \.self) { row in
-                    HStack(spacing: 12) {
+                    HStack(spacing: geo.size.width * 0.03) {
                         ForEach(row, id: \.self) { symbol in
-                            CalculatorButton(label: symbol) {
+                            CalculatorButton(
+                                label: symbol,
+                                size: geo.size.width * 0.18
+                            ) {
                                 buttonPressed(symbol)
                             }
                         }
@@ -47,6 +52,7 @@ struct ContentView: View {
             .padding()
             .background(Color.gray)
         }
+    }
     
     private func buttonPressed(_ symbol: String) {
         switch symbol {

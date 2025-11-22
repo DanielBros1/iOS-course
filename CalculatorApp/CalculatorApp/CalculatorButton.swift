@@ -9,11 +9,12 @@ import SwiftUI
 
 struct CalculatorButton: View {
     let label: String
+    let size: CGFloat
     let action: () -> Void
     
     var backgroundColor: Color {
         switch label {
-        case "AC": return .red
+        case "C": return .red
         case "+", "−", "×", "÷", "=", "^": return .orange
         default: return .gray
         }
@@ -22,11 +23,11 @@ struct CalculatorButton: View {
     var body: some View {
         Button(action: action) {
             Text(label)
-                .font(.system(size: 32, weight: .medium))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .font(.system(size: size * 0.45))
                 .foregroundColor(.white)
-                .background(backgroundColor)
-                .cornerRadius(16)
+                .frame(width: size, height: size)
+                .background(Color.orange)
+                .cornerRadius(size / 2)
         }
     }
 }
