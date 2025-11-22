@@ -53,6 +53,8 @@ struct ContentView: View {
             numberPressed(symbol)
         case "+", "/":
             operationPressed(symbol)
+        case "C":
+            clear()
         default:
             break
         }
@@ -71,6 +73,48 @@ struct ContentView: View {
         firstValue = Double(display)
         currentOperation = op
         userIsTyping = false
+    }
+    
+    private func calculateResult() {
+        guard let op = currentOperation,
+              let first = firstValue,
+              let second = Double(display) else { return }
+        
+        var result: Double = first
+        
+        switch op {
+        case "+": result = first + second
+        case "−": result = first - second
+        case "×": result = first * second
+        case "÷": result = second != 0 ? first / second : 0
+        case "^": result = pow(first, second)
+        default: break
+        }
+        
+        display = format(result)
+        firstValue = result
+        userIsTyping = false
+    }
+    
+    private func clear() {
+        display = "0"
+        currentOperation = nil
+        firstValue = nil
+        userIsTyping = false
+    }
+    
+    private func applyPercent() {
+        if let value = Double(display) {
+            display =  format( value / 100)
+        }
+    }
+    
+    private func format(_ value: Double) -> String {
+        if value.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(Int(value))
+        } else {
+            return String(format: "%.4f", value)
+        }
     }
 }
 
