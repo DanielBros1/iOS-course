@@ -14,10 +14,11 @@ struct ContentView: View {
     @State private var userIsTyping = false
     
     let buttons: [[String]] = [
-        ["C", "S", "-", "/"],
+        ["C", "+/-", "%", "÷"],
+        ["7", "8", "9", "×"],
+        ["4", "5", "6", "−"],
         ["1", "2", "3", "+"],
-        ["4", "5", "6", "-"],
-        ["7", "8", "9", "x"]
+        ["0", ".", "=", "^"]
     ]
     
     
@@ -51,14 +52,21 @@ struct ContentView: View {
         switch symbol {
         case "0"..."9", ".":
             numberPressed(symbol)
-        case "+", "/":
+        case "+", "−", "×", "÷", "^":
             operationPressed(symbol)
+        case "=":
+            calculateResult()
         case "C":
             clear()
+        case "+/-":
+            toggleSign()
+        case "%":
+            applyPercent()
         default:
             break
         }
     }
+    
     
     private func numberPressed(_ num: String) {
         if !userIsTyping {
@@ -101,6 +109,12 @@ struct ContentView: View {
         currentOperation = nil
         firstValue = nil
         userIsTyping = false
+    }
+    
+    private func toggleSign() {
+        if let value = Double(display) {
+            display = format(-value)
+        }
     }
     
     private func applyPercent() {
