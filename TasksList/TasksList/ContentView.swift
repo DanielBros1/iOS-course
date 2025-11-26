@@ -11,31 +11,43 @@ struct TaskItem: Identifiable {
     let id = UUID()
     var title: String
     var description: String
+    var isCompleted: Bool = false
 }
 
 struct ContentView: View {
     
-    let examplesTasks: [TaskItem] = [
-        TaskItem(title: "TEST", description: "Przerobić rozdział o listach."),
-        TaskItem(title: "Wysłanie maila", description: "Send123.")
-    ]
+    @State private var tasks: [TaskItem] = [
+            TaskItem(title: "Przyjsc na zajecia", description: "iOS 12:00"),
+            TaskItem(title: "Zestaw 1", description: "Metoda RSA"),
+            TaskItem(title: "Praca magisterska", description: "Przeczytac rozdzial 3"),
+
+        ]
     
-        var body: some View {
-            // Używamy NavigationStack, aby móc później dodać tytuł i nawigację
+    var body: some View {
             NavigationStack {
                 
-                // 3. Wyświetlanie listy
-                List(examplesTasks) { task in
-                    // Wyświetlanie każdego elementu listy
-                    VStack(alignment: .leading) {
-                        Text(task.title)
-                            .font(.headline)
-                        Text(task.description)
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+                List {
+                    // binding ($task), aby móc modyfikować elementy w tablicy
+                    ForEach($tasks) { $task in
+                        HStack {
+                            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                // Kolor ikonki zależy od statusu
+                                .foregroundColor(task.isCompleted ? .green : .gray)
+                                .onTapGesture {
+                                    task.isCompleted.toggle()
+                                }
+                            
+                            // Tytuł zadania
+                            VStack(alignment: .leading) {
+                                Text(task.title)
+                                Text(task.description)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                        }
                     }
                 }
-                .navigationTitle("Lista Zadań (3.0)")
+                .navigationTitle("Task List")
             }
         }
     }
