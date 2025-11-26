@@ -7,18 +7,43 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
+struct TaskItem: Identifiable {
+    let id = UUID()
+    var title: String
+    var description: String
 }
+
+struct ContentView: View {
+    
+    let examplesTasks: [TaskItem] = [
+        TaskItem(title: "TEST", description: "Przerobić rozdział o listach."),
+        TaskItem(title: "Wysłanie maila", description: "Send123.")
+    ]
+    
+        var body: some View {
+            // Używamy NavigationStack, aby móc później dodać tytuł i nawigację
+            NavigationStack {
+                
+                // 3. Wyświetlanie listy
+                List(examplesTasks) { task in
+                    // Wyświetlanie każdego elementu listy
+                    VStack(alignment: .leading) {
+                        Text(task.title)
+                            .font(.headline)
+                        Text(task.description)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                }
+                .navigationTitle("Lista Zadań (3.0)")
+            }
+        }
+    }
+
 
 #Preview {
     ContentView()
 }
+
+    
+
