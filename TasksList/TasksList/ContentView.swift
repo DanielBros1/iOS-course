@@ -27,35 +27,34 @@ struct ContentView: View {
             NavigationStack {
                 
                 List {
-                    // binding ($task), aby móc modyfikować elementy w tablicy
                     ForEach($tasks) { $task in
-                        HStack {
-                            Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
-                                // Kolor ikonki zależy od statusu
-                                .foregroundColor(task.isCompleted ? .green : .gray)
-                                .onTapGesture {
-                                    task.isCompleted.toggle()
+                        NavigationLink {
+                            TaskEditView(task: $task)
+                        } label: {
+                            HStack {
+                                Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
+                                    .foregroundColor(task.isCompleted ? .green : .gray)
+                                    .onTapGesture {
+                                        task.isCompleted.toggle()
+                                    }
+                                    .padding(.trailing, 8)
+                                
+                                // Tytuł i opis
+                                VStack(alignment: .leading) {
+                                    Text(task.title)
+                                    Text(task.description)
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
                                 }
-                            
-                            // Tytuł zadania
-                            VStack(alignment: .leading) {
-                                Text(task.title)
-                                Text(task.description)
-                                    .font(.subheadline)
-                                    .foregroundColor(.gray)
                             }
                         }
                     }
                 }
-                .navigationTitle("Task List")
+                .navigationTitle("Lista Zadań")
             }
         }
     }
 
-
-#Preview {
-    ContentView()
-}
-
-    
-
+    #Preview {
+        ContentView()
+    }
