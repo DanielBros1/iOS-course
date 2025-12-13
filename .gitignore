@@ -4,20 +4,10 @@ DerivedData/
 
 *.xcodeproj/xcuserdata/
 *.xcworkspace/xcuserdata/
-*.xcsettings
 
-*.xcodeproj/project.xcworkspace/
-*.xcworkspace/contents.xcworkspacedata
 *.xcuserdatad/xcschemes/
-*.xcscmblueprint
 *.xcplayground/
-
-*.xcodeproj/project.xcworkspace/
-*.xcworkspace/contents.xcworkspacedata
-
-
-
-
+*.xcuserstate
 
 
 
