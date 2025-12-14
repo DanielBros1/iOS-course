@@ -13,16 +13,23 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            ProductListView().tabItem {
+            NavigationStack {
+                ProductListView()
+            }
+            .tabItem {
                 Label("Produkty", systemImage: "list.bullet")
             }
-            CartView().tabItem {
+
+            NavigationStack {
+                CartView()
+            }
+            .tabItem {
                 Label("Koszyk", systemImage: "cart")
             }
-        }.environmentObject(cart)
+        }
+        .environmentObject(cart)
     }
 }
-
 
 
 #Preview {
