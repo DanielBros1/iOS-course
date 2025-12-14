@@ -16,7 +16,7 @@ let container: NSPersistentContainer
 
 
 init() {
-    container = NSPersistentContainer(name: "ShoppingModel")
+    container = NSPersistentContainer(name: "ShoppingList")
     container.loadPersistentStores { _, error in
         if let error = error {
             fatalError(error.localizedDescription)
