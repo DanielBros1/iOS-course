@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView {
-            ProductsView().tabItem {
+            ProductListView().tabItem {
                 Label("Produkty", systemImage: "list.bullet")
             }
             CartView().tabItem {
@@ -23,14 +23,14 @@ struct ContentView: View {
     }
 }
 
-# PreviewProvider
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-//
-//# Preview {
-//    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//#PreviewProvider
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
 //}
+
+
+#Preview {
+    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+}
