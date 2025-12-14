@@ -13,13 +13,24 @@ struct CartView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(cart.items) {
-                    item in HStack {
-                        Text(item.product.name ? ?"Nieznany produkt") Spacer() Text("Liczba: \( item.quantity )") Text(String(format: "%.2f zł", item.product.price * Double(item.quantity)))
+                ForEach(cart.items) { item in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(item.product.name ?? "Nieznany produkt").font(.headline)
+                            Text("Ilość: \(item.quantity)").font(.subheadline).foregroundColor(.gray)
+                        }
+                        Spacer()
+                        Text(String(format: "%.2f zł", item.product.price * Double(item.quantity)))
                     }
                 }
-                Text("Łączna suma: \( String(format: "%.2f zł", cart.totalPrice()))").font(.headline)
-            }.navigationTitle("Koszyk")
+                HStack {
+                    Text("Łączna cena:").font(.headline)
+                    Spacer()
+                    Text(String(format: "%.2f zł", cart.totalPrice)).font(.headline)
+                }
+            }
+            .navigationTitle("Koszyk")
         }
     }
 }
+
