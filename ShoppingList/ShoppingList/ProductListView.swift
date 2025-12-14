@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ProductListView: View {
     @FetchRequest(
@@ -26,7 +27,7 @@ struct ProductListView: View {
                     Spacer()
                     Text(String(format: "%.2f zł", product.price))
                     Button(action: {
-                        cart.addToCart(product: product)
+                        cart.add(product: product)
                     }) {
                         Image(systemName: "plus.circle").foregroundColor(.blue)
                     }.buttonStyle(BorderlessButtonStyle())
