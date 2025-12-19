@@ -7,16 +7,16 @@
 
 import CoreData
 
-struct PersistenceController {
-    static let shared = PersistenceController()
+struct Persistence {
+    static let shared = Persistence()
 
     let container: NSPersistentContainer
 
     init() {
-        container = NSPersistentContainer(name: "ShopModel")
+        container = NSPersistentContainer(name: "Network")
         container.loadPersistentStores { _, error in
             if let error = error {
-                fatalError("CoreData error \(error)")
+                fatalError("CoreData error: \(error)")
             }
         }
     }
