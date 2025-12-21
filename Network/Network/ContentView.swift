@@ -15,6 +15,9 @@ struct ContentView: View {
     var body: some View {
         Text("Network app running")
             .padding()
+            .task {
+                await PersistenceController.shared.importFromAPI()
+            }
     }
 }
 

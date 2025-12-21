@@ -51,3 +51,39 @@ extension PersistenceController {
         }
     }
 }
+
+extension PersistenceController {
+
+    func importFromAPI() async {
+        let context = container.viewContext
+
+        do {
+            let categories = try await APIService.shared.fetchCategories()
+            let products = try await APIService.shared.fetchProducts()
+
+            var categoryMap: [Int64: CategoryEntity] = [:]
+
+            for apiCategory in categories {
+                let category = CategoryEntity(context: context)
+                category.id = apiCategory.id
+                category.name = apiCategory.name
+                categoryMap[apiCategory.id] = category
+            }
+
+            for apiProduct in products {
+                let product = ProductEntity(context: context)
+                product.id = apiProduct.id
+                product.name = apiProduct.name
+                product.price = apiProduct.price
+                product.category = categoryMap[apiProduct.categoryId]
+            }
+
+            try context.save()
+            print("✅ API → CoreData OK")
+
+        } catch {
+            print("❌ API import error:", error)
+        }
+    }
+}
+
