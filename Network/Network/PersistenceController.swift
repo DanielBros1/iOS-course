@@ -47,7 +47,7 @@ extension PersistenceController {
             try context.save()
             print("✅ CoreData TEST OK")
         } catch {
-            print("❌ CoreData TEST ERROR:", error)
+            print("CoreData TEST ERROR:", error)
         }
     }
 }
@@ -82,8 +82,31 @@ extension PersistenceController {
             print("✅ API → CoreData OK")
 
         } catch {
-            print("❌ API import error:", error)
+            print("API import error:", error)
         }
+    }
+}
+
+extension PersistenceController {
+
+    func clearAllData() {
+        let context = container.viewContext
+
+        let entities = ["ProductEntity", "CategoryEntity", "OrderEntity"]
+
+        for entity in entities {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+            do {
+                try container.persistentStoreCoordinator.execute(deleteRequest,
+                                                                 with: context)
+            } catch {
+                print("Failed to clear \(entity):", error)
+            }
+        }
+
+        print("🧹 CoreData cleared")
     }
 }
 
