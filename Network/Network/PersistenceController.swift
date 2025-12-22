@@ -24,43 +24,12 @@ struct PersistenceController {
 
 extension PersistenceController {
 
-    func testCoreData() {
-        let context = container.viewContext
-
-        let category = CategoryEntity(context: context)
-        category.id = 1
-        category.name = "Test Category"
-
-        let product = ProductEntity(context: context)
-        product.id = 1
-        product.name = "Test Product"
-        product.price = 99.99
-        product.category = category
-
-        let order = OrderEntity(context: context)
-        order.id = 1
-        order.status = "PAID"
-        order.totalPrice = 99.99
-        order.product = product
-
-        do {
-            try context.save()
-            print("✅ CoreData TEST OK")
-        } catch {
-            print("CoreData TEST ERROR:", error)
-        }
-    }
-}
-
-extension PersistenceController {
-
     func importFromAPI() async {
         let context = container.viewContext
 
         do {
             let categories = try await APIService.shared.fetchCategories()
             let products = try await APIService.shared.fetchProducts()
-
             var categoryMap: [Int64: CategoryEntity] = [:]
 
             for apiCategory in categories {
@@ -80,7 +49,6 @@ extension PersistenceController {
 
             try context.save()
             print("✅ API → CoreData OK")
-
         } catch {
             print("API import error:", error)
         }
@@ -88,10 +56,8 @@ extension PersistenceController {
 }
 
 extension PersistenceController {
-
     func clearAllData() {
         let context = container.viewContext
-
         let entities = ["ProductEntity", "CategoryEntity", "OrderEntity"]
 
         for entity in entities {
@@ -99,13 +65,11 @@ extension PersistenceController {
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
             do {
-                try container.persistentStoreCoordinator.execute(deleteRequest,
-                                                                 with: context)
+                try container.persistentStoreCoordinator.execute(deleteRequest, with: context)
             } catch {
                 print("Failed to clear \(entity):", error)
             }
         }
-
         print("🧹 CoreData cleared")
     }
 }
