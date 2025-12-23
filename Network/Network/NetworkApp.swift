@@ -12,11 +12,7 @@ internal import CoreData
 struct NetworkApp: App {
 
     let persistenceController = PersistenceController.shared
-
-    init() {
-        persistenceController.testCoreData()
-    }
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

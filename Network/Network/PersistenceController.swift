@@ -19,6 +19,7 @@ struct PersistenceController {
                 fatalError("CoreData error: \(error)")
             }
         }
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
 }
 
@@ -33,7 +34,8 @@ extension PersistenceController {
             var categoryMap: [Int64: CategoryEntity] = [:]
 
             for apiCategory in categories {
-                let category = CategoryEntity(context: context)
+                let category = fetchCategory(byId: apiCategory.id, context: context)
+                    ?? CategoryEntity(context: context)
                 category.id = apiCategory.id
                 category.name = apiCategory.name
                 categoryMap[apiCategory.id] = category
@@ -71,6 +73,19 @@ extension PersistenceController {
             }
         }
         print("🧹 CoreData cleared")
+    }
+}
+
+extension PersistenceController {
+    // To avoid category multiplication
+    func fetchCategory(byId id: Int64,
+                       context: NSManagedObjectContext) -> CategoryEntity? {
+
+        let request = NSFetchRequest<CategoryEntity>(entityName: "CategoryEntity")
+        request.predicate = NSPredicate(format: "id == %d", id)
+        request.fetchLimit = 1
+
+        return try? context.fetch(request).first
     }
 }
 
