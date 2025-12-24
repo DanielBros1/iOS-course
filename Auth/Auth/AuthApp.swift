@@ -11,7 +11,17 @@ import SwiftUI
 struct AuthApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            TabView {
+                LoginView()
+                    .tabItem {
+                        Label("Login", systemImage: "person.fill")
+                    }
+                
+                RegisterView()
+                    .tabItem {
+                        Label("Register", systemImage: "person.badge.plus")
+                    }
+            }
         }
     }
 }
