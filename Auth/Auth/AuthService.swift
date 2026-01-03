@@ -66,5 +66,26 @@ final class AuthService {
             }
         }.resume()
     }
+    
+    func loginWithGoogle(googleToken: String, completion: @escaping (Bool) -> Void) {
+        let url = URL(string: "https://reqres.in/api/login")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        // Symulacja wyslania tokenu
+        let body = ["token": googleToken]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+
+        URLSession.shared.dataTask(with: request) { data, _, _ in
+            guard let data = data,
+                  let response = try? JSONDecoder().decode(LoginResponse.self, from: data) else {
+                completion(false)
+                return
+            }
+            KeychainService.save(token: response.token)
+            completion(true)
+        }.resume()
+    }
 }
 
