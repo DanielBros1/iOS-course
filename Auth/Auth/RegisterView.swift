@@ -9,11 +9,11 @@ import SwiftUI
 
 struct RegisterView: View {
 
+    @State private var name = ""
     @State private var email = ""
     @State private var password = ""
     @State private var message = ""
-
-    let authService = AuthService()
+    @State private var isLoading = false
 
     var body: some View {
         VStack(spacing: 16) {
@@ -21,23 +21,40 @@ struct RegisterView: View {
             Text("Rejestracja")
                 .font(.title)
 
+            TextField("Name", text: $name)
+                .textFieldStyle(.roundedBorder)
+
             TextField("Email", text: $email)
                 .textFieldStyle(.roundedBorder)
 
             SecureField("Password", text: $password)
                 .textFieldStyle(.roundedBorder)
 
-            Button("Zarejestruj") {
-                authService.register(email: email, password: password) { success in
-                    DispatchQueue.main.async {
-                        message = success ? "Rejestracja OK" : "Błąd rejestracji"
+            Button(isLoading ? "Rejestracja..." : "Zarejestruj") {
+                Task {
+                    isLoading = true
+                    defer { isLoading = false }
+
+                    do {
+                        try await AuthAPI.register(
+                            name: name,
+                            email: email,
+                            password: password
+                        )
+                        message = "Rejestracja OK"
+                    } catch {
+                        message = "Błąd rejestracji"
                     }
                 }
             }
+            .disabled(isLoading)
 
             Text(message)
                 .foregroundColor(.blue)
         }
         .padding()
     }
+}
+#Preview {
+    RegisterView()
 }
