@@ -9,7 +9,13 @@ DerivedData/
 *.xcplayground/
 *.xcuserstate
 
-
+Network/Network.xcodeproj/xcuserdata/
+ShoppingList/ShoppingList.xcodeproj/xcuserdata/
+TasksList/TasksList.xcodeproj/xcuserdata/
+backend_zadanie_5/.env
+backend_zadanie_5/db.sqlite
+backend_zadanie_5/node_modules/
+backend_zadanie_5/package-lock.json
 
 
 
