@@ -13,13 +13,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F9DC5CE2F114D62009B1FD6 /* stripe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stripe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F9DC5CE2F114D62009B1FD6 /* stripeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stripeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1F9DC5D02F114D62009B1FD6 /* stripe */ = {
+		1F9DC5D02F114D62009B1FD6 /* stripeApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = stripe;
+			path = stripeApp;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -41,7 +41,7 @@
 		1F9DC5C52F114D62009B1FD6 = {
 			isa = PBXGroup;
 			children = (
-				1F9DC5D02F114D62009B1FD6 /* stripe */,
+				1F9DC5D02F114D62009B1FD6 /* stripeApp */,
 				1F9DC5CF2F114D62009B1FD6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,7 +49,7 @@
 		1F9DC5CF2F114D62009B1FD6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F9DC5CE2F114D62009B1FD6 /* stripe.app */,
+				1F9DC5CE2F114D62009B1FD6 /* stripeApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +57,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1F9DC5CD2F114D62009B1FD6 /* stripe */ = {
+		1F9DC5CD2F114D62009B1FD6 /* stripeApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F9DC5D92F114D63009B1FD6 /* Build configuration list for PBXNativeTarget "stripe" */;
+			buildConfigurationList = 1F9DC5D92F114D63009B1FD6 /* Build configuration list for PBXNativeTarget "stripeApp" */;
 			buildPhases = (
 				1F9DC5CA2F114D62009B1FD6 /* Sources */,
 				1F9DC5CB2F114D62009B1FD6 /* Frameworks */,
@@ -70,16 +70,16 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				1F9DC5D02F114D62009B1FD6 /* stripe */,
+				1F9DC5D02F114D62009B1FD6 /* stripeApp */,
 			);
-			name = stripe;
+			name = stripeApp;
 			packageProductDependencies = (
 				1F5944152F1813E400FD2FD8 /* Stripe */,
 				1F5944172F1813E400FD2FD8 /* StripeCardScan */,
 				1F5944192F1813E400FD2FD8 /* StripePaymentSheet */,
 			);
 			productName = stripe;
-			productReference = 1F9DC5CE2F114D62009B1FD6 /* stripe.app */;
+			productReference = 1F9DC5CE2F114D62009B1FD6 /* stripeApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +97,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1F9DC5C92F114D62009B1FD6 /* Build configuration list for PBXProject "stripe" */;
+			buildConfigurationList = 1F9DC5C92F114D62009B1FD6 /* Build configuration list for PBXProject "stripeApp" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -114,7 +114,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1F9DC5CD2F114D62009B1FD6 /* stripe */,
+				1F9DC5CD2F114D62009B1FD6 /* stripeApp */,
 			);
 		};
 /* End PBXProject section */
@@ -324,7 +324,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1F9DC5C92F114D62009B1FD6 /* Build configuration list for PBXProject "stripe" */ = {
+		1F9DC5C92F114D62009B1FD6 /* Build configuration list for PBXProject "stripeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F9DC5D72F114D63009B1FD6 /* Debug */,
@@ -333,7 +333,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F9DC5D92F114D63009B1FD6 /* Build configuration list for PBXNativeTarget "stripe" */ = {
+		1F9DC5D92F114D63009B1FD6 /* Build configuration list for PBXNativeTarget "stripeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F9DC5DA2F114D63009B1FD6 /* Debug */,
