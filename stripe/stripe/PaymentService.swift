@@ -1,1 +1,11 @@
-class PaymentService {    // Symulacja endpointu backendowego    func mockCreatePaymentIntent(amount: Int) async throws -> String {        // W realnym świecie: URLSession do Twojego API        // Tutaj: udajemy opóźnienie sieciowe i zwracamy "client_secret"        try await Task.sleep(nanoseconds: 1 * 1_000_000_000)        return "pi_mock_secret_\(UUID().uuidString)"    }}
+//
+//  PaymentService.swift
+//  stripe
+//
+//  Created by user279425 on 1/14/26.
+//
+
+protocol PaymentService {
+    func createPaymentIntent(amount: Int) async throws -> String
+    func confirmPayment(clientSecret: String) async throws -> PaymentStatus
+}
