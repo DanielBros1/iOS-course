@@ -9,19 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
 
-    let product = Product(
-        id: UUID(),
-        name: "Premium Subscription",
-        price: 1999
-    )
-
     var body: some View {
-        PaymentView(
-            viewModel: PaymentViewModel(product: product)
-        )
+        TabView {
+
+            ProductListView()
+                .tabItem {
+                    Label("Sklep", systemImage: "cart")
+                }
+
+            PurchasedView()
+                .tabItem {
+                    Label("Zakupy", systemImage: "checkmark")
+                }
+        }
     }
 }
-
 
 #Preview {
     ContentView()

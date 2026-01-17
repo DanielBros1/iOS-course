@@ -1,0 +1,9 @@
+//
+//  ProductListView.swift
+//  stripeApp
+//
+//  Created by user279425 on 1/17/26.
+//
+
+
+import SwiftUIstruct ProductListView: View {    @StateObject var vm = PaymentViewModel()    let products = [        Product(name: "Kurs Swift", price: 1999),        Product(name: "Premium", price: 2999),        Product(name: "Ebook", price: 999)    ]    var body: some View {        NavigationStack {            List(products) { product in                HStack {                    VStack(alignment: .leading) {                        Text(product.name)                        Text("\(product.price / 100) zł")                    }                    Spacer()                    Button("Kup") {                        Task { await vm.buy(product) }                    }                }            }            .navigationTitle("Sklep")            .overlay {                if vm.isProcessing {                    ProgressView("Przetwarzanie...")                }            }            .alert("Info", isPresented: .constant(vm.message != nil)) {                Button("OK") { vm.message = nil }            } message: {                Text(vm.message ?? "")            }        }    }}
