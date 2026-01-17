@@ -73,5 +73,28 @@ Kod : https://github.com/DanielBros1/iOS-course/tree/main/Network
 
 #
 
-### Zadanie 6: 
+### Zadanie 6: Płatności
 
+✅ 3.0 formularz płatności oraz mockowanie przez aplikację serwerową
+
+✅ 3.5 model płatności lokalnie
+
+✅ 4.0 lista zakupionych (opłaconych) produktów + model
+
+❌ 4.5 wdrożenie stripe'a
+
+❌ 5.0 dodanie skanowania kart
+
+### Zadanie 7: Testy
+
+Zad 7 Testy
+
+❌ 3.0 stworzyć 30 asercji testów funkcjonalnych
+
+❌ 3.5 stworzyć dodatkowo 20 asercji testów jednostkowych
+
+❌ 4.0 stworzyć mocki modelu produktów
+
+❌ 4.5 stworzyć mocki modelu kategorii
+
+❌ 5.0 dodać fixturki
