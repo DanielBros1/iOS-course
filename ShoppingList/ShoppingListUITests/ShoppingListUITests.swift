@@ -19,7 +19,7 @@ final class ShoppingListUITests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // Put teardow/Volumes/Macintosh_HD/Users/user279425/Desktop/iOS-course/ShoppingList/ShoppingListUITests/ShoppingListUITests.swiftn code here. This method is called after the invocation of each test method in the class.
     }
 
     @MainActor
