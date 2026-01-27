@@ -17,22 +17,41 @@ struct ProductListView: View {
     @EnvironmentObject var cart: CartViewModel
 
     var body: some View {
-        List {
-            ForEach(products) { product in
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(product.name ?? "Nieznany produkt").font(.headline)
-                        Text(product.desc ?? "").font(.subheadline).foregroundColor(.gray)
+            List {
+                ForEach(products) { product in
+                    ZStack {
+                        NavigationLink(destination: ProductDetailView(product: product)) {
+                            EmptyView()
+                        }
+                        .opacity(0)
+
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(product.name ?? "Nieznany produkt")
+                                    .font(.headline)
+                                Text(product.desc ?? "")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                            }
+                            
+                            Spacer()
+                            
+                            Text(String(format: "%.2f zł", product.price))
+                                .padding(.trailing, 4)
+
+                            Button(action: {
+                                cart.add(product: product)
+                            }) {
+                                Image(systemName: "plus.circle")
+                                    .foregroundColor(.blue)
+                                    .font(.title3)
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                            .accessibilityIdentifier("plus.circle")
+                        }
                     }
-                    Spacer()
-                    Text(String(format: "%.2f zł", product.price))
-                    Button(action: {
-                        cart.add(product: product)
-                    }) {
-                        Image(systemName: "plus.circle").foregroundColor(.blue)
-                    }.buttonStyle(BorderlessButtonStyle())
                 }
             }
-        }.navigationTitle("Produkty")
-    }
+            .navigationTitle("Produkty")
+        }
 }
