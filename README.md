@@ -104,5 +104,6 @@ Zad 7 Testy
 ❌ 5.0 dodać fixturki
 
 Kod : https://github.com/DanielBros1/iOS-course/tree/main/ShoppingList/ShoppingListTests
+
 Kod : https://github.com/DanielBros1/iOS-course/tree/main/ShoppingList/ShoppingListUITests
 #
