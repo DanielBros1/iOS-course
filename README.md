@@ -71,6 +71,7 @@ Kod : https://github.com/DanielBros1/iOS-course/tree/main/Network
 
 ✅ 5.0 zapisywanie danych logowania OAuth2 po stronie serwera
 
+Kod : https://github.com/DanielBros1/iOS-course/tree/main/Auth
 #
 
 ### Zadanie 6: Płatności
@@ -85,16 +86,23 @@ Kod : https://github.com/DanielBros1/iOS-course/tree/main/Network
 
 ❌ 5.0 dodanie skanowania kart
 
+Kod : https://github.com/DanielBros1/iOS-course/tree/main/stripe
+#
+
 ### Zadanie 7: Testy
 
 Zad 7 Testy
 
-❌ 3.0 stworzyć 30 asercji testów funkcjonalnych
+✅ 3.0 stworzyć 30 asercji testów funkcjonalnych
 
-❌ 3.5 stworzyć dodatkowo 20 asercji testów jednostkowych
+✅ 3.5 stworzyć dodatkowo 20 asercji testów jednostkowych
 
-❌ 4.0 stworzyć mocki modelu produktów
+✅ 4.0 stworzyć mocki modelu produktów
 
-❌ 4.5 stworzyć mocki modelu kategorii
+✅ 4.5 stworzyć mocki modelu kategorii
 
 ❌ 5.0 dodać fixturki
+
+Kod : https://github.com/DanielBros1/iOS-course/tree/main/ShoppingList/ShoppingListTests
+Kod : https://github.com/DanielBros1/iOS-course/tree/main/ShoppingList/ShoppingListUITests
+#
